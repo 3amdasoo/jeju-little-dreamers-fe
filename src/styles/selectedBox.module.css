@@ -1,0 +1,9 @@
+.selected {
+  width: auto;
+  height: 15px;
+  border-radius: 20px;
+  border: #269600 1px solid;
+  padding: 7px 12px;
+  font-size: 13px;
+  white-space: nowrap;
+}
