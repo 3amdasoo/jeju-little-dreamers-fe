@@ -57,6 +57,10 @@ export default function Main() {
     );
   };
 
+  const handleReset = () => {
+    setSelected_list([]);
+  };
+
   return (
     <>
       <Header />
@@ -75,7 +79,9 @@ export default function Main() {
             selectedDropValue={selectedPriceValue}
             list={price_list}
           ></DropdownBox>
-          <div className={styles.reset}>초기화</div>
+          <button className={styles.reset} onClick={handleReset}>
+            초기화
+          </button>
         </div>
 
         {/* 검색키워드 */}

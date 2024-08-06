@@ -55,8 +55,10 @@
   font-size: 12px;
   white-space: nowrap;
   position: absolute;
-  top: 12px;
-  left: 280px;
+  top: 13px;
+  left: 276px;
+  border: 0;
+  background-color: transparent;
 }
 
 .map {
