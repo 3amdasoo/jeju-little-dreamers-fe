@@ -52,6 +52,7 @@ export default function Map({ filteredData, onMarkerClick }) {
 
         myPositionMarker.setMap(map);
 
+        console.log(filteredData);
         filteredData.forEach((item) => {
           const storeMarker = new window.kakao.maps.Marker({
             position: new window.kakao.maps.LatLng(item.latitude, item.longitude),

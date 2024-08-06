@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import logo from "../assets/logo.png";
 import kakaologin from "../assets/kakao_login.png";
 
@@ -14,11 +14,7 @@ function SocialKakao() {
 
   return (
     <button className="kakao-login" onClick={handleLogin}>
-      <img
-        src={kakaologin}
-        alt="카카오 로그인"
-        className="kakao-login-image"
-      />
+      <img src={kakaologin} alt="카카오 로그인" className="kakao-login-image" />
     </button>
   );
 }
@@ -27,8 +23,8 @@ function Home() {
   return (
     <div>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>제주 꼬망이들</h1>
+        {/* <img src={logo} className="App-logo" alt="logo" /> */}
+        {/* <h1>제주 꼬망이들</h1> */}
         <SocialKakao />
       </header>
     </div>
