@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-app
+spec:
+  selector:
+    matchLabels:
+      app: react-app
+  template:
+    metadata:
+      labels:
+        app: react-app
+    spec:
+      containers:
+        - name: react-app
+          image: krmp-d2hub-idock.9rum.cc/your-d2hub-repo/react-app:latest
+          ports:
+            - containerPort: 80
