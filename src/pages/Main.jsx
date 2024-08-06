@@ -1,4 +1,3 @@
-import Header from "../components/Header";
 import styles from "../styles/mainpage.module.css";
 import down_bnt from "../assets/bnt.png";
 import SelectedBox from "../components/SelectedBox";
@@ -6,7 +5,6 @@ import SelectedBox from "../components/SelectedBox";
 export default function Main() {
   return (
     <div className={styles.container}>
-      <Header />
       <div className={styles.bnt_container}>
         <button className={styles.select_bnt}>
           <div>카테고리</div>

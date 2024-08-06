@@ -1,0 +1,102 @@
+.reviewContainer {
+    width: 320px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.profilePic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.userInfo {
+    flex: 1;
+    text-align: left;
+}
+
+.nickname {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+}
+
+.starFilled, .starEmpty {
+    font-size: 14px;
+    color: #FFD700;
+}
+
+.starEmpty {
+    color: #ddd;
+}
+
+.time {
+    margin-left: 10px;
+    font-size: 12px;
+    color: #888;
+}
+
+.kebabMenu {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.menu {
+    position: absolute;
+    top: 40px;
+    right: 10px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.menuItem {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+}
+
+.menuItem:last-child {
+    border-bottom: none;
+}
+
+.menuItem:hover {
+    background-color: #f0f0f0;
+}
+
+.content {
+    font-size: 14px;
+    color: #333;
+    margin: 10px 0;
+    text-align: left;
+}
+
+.imageContainer {
+    display: flex;
+    gap: 10px;
+}
+
+.reviewImage {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    object-fit: cover;
+}
