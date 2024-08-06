@@ -9,18 +9,20 @@
   padding-bottom: 50px;
   position: absolute;
   top: 550px;
+  opacity: 90%;
 }
 
 .RestaurantInfoPageContainer {
   height: auto;
   width: 95%;
-  /* border-radius: 10px; */
+  border-radius: 20px;
   border-bottom: 3px #eee solid;
   text-align: left;
   background-color: #fff;
-  /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   margin: 10px;
   padding-bottom: 30px;
+  opacity: 95%;
 }
 
 .RestaurantInfoName {
