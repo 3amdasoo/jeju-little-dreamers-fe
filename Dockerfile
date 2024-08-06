@@ -1,4 +1,4 @@
-# 공식 Node.js 이미지를 베이스 이미지로 사용
+# 1단계 - Node.js 이미지를 사용하여 React 애플리케이션 빌드
 FROM node:20.13.1 AS build
 
 # 작업 디렉토리 설정
