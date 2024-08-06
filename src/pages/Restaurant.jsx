@@ -1,67 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import RestaurantInfo from "../components/RestaurantInfo";
 import MenuInfo from "../components/MenuInfo";
 import ReviewContainer from "../components/ReviewContainer";
 import styles from "../styles/Restaurant.module.css";
-
-const dummy = [
-  {
-    id: 1,
-    store: "착한 밥집",
-    category: ["한식", "족발보쌈"],
-    menu: [
-      { name: "제육볶음", price: 5000 },
-      { name: "소불고기 덮밥", price: 15000 },
-    ],
-    lat: 33.487135,
-    lng: 126.5306925,
-    image: null,
-    address: "제주 제주시 서천길 1",
-    status: "영업 중",
-    closingTime: "22:00",
-    phone: "0507-1479-9093",
-    rating: 4.1,
-  },
-  {
-    id: 2,
-    store: "더 착한 밥집",
-    category: ["중식", "한식"],
-    menu: [
-      { name: "제육볶음", price: 3000 },
-      { name: "짜장면", price: 5000 },
-    ],
-    lat: 33.488205,
-    lng: 126.5312225,
-    image: null,
-    address: "제주 제주시 서천길 2",
-    status: "영업 중",
-    closingTime: "23:00",
-    phone: "0507-1479-9094",
-    rating: 4.5,
-  },
-  {
-    id: 3,
-    store: "덜 착한 밥집",
-    category: ["일식", "족발보쌈"],
-    menu: [
-      { name: "일본카레", price: 10000 },
-      { name: "족발보쌈", price: 20000 },
-    ],
-    lat: 33.487015,
-    lng: 126.5321025,
-    image: null,
-    address: "제주 제주시 서천길 3",
-    status: "영업 중",
-    closingTime: "21:00",
-    phone: "0507-1479-9095",
-    rating: 4.2,
-  },
-];
+import nearbyData from '../data/nearbyGoorm.json';
+import menuData from "../data/Menu.json";
 
 export default function Restaurant() {
   const { id } = useParams();
-  const restaurant = dummy.find((rest) => rest.id === parseInt(id));
+  const [restaurant, setRestaurant] = useState(null);
+  const [menu, setMenu] = useState([]);
+
+  useEffect(() => {
+    const fetchRestaurant = async () => {
+      // JSON 데이터에서 레스토랑 찾기
+      const restaurantData = nearbyData.find(rest => rest.id === id);
+      if (restaurantData) {
+        setRestaurant(restaurantData);
+        // 해당 레스토랑의 메뉴 가져오기
+        const restaurantMenu = menuData.filter(item => item.store_id === id);
+        setMenu(restaurantMenu);
+      }
+    };
+    fetchRestaurant();
+  }, [id]);
+
+  if (!restaurant) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className={styles.container}>
@@ -69,7 +36,7 @@ export default function Restaurant() {
         restaurant={restaurant}
         style={"RestaurantInfoPageContainer"}
       />
-      <MenuInfo menu={restaurant.menu} />
+      <MenuInfo menu={menu} />
       <ReviewContainer />
     </div>
   );
