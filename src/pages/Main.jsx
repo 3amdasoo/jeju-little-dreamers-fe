@@ -142,9 +142,7 @@ export default function Main() {
           <SelectedBox key={el} data={el} onClickKeyword={handleClickKeyword} />
         ))}
       </div>
-
       <Map filteredData={filteredDummy} onMarkerClick={handleMarkerClick} />
-
       {selectedRestaurant && (
         <RestaurantInfo
           restaurant={selectedRestaurant}
