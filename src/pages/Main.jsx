@@ -12,6 +12,19 @@ export default function Main() {
   const [selected_list, setSelected_list] = useState([]);
   const [isDropdown, setIsDropdown] = useState(false);
 
+  const menu_list = [
+    { id: 1, value: "한식" },
+    { id: 2, value: "중식" },
+    { id: 3, value: "일식" },
+    { id: 4, value: "족발보쌈" },
+  ];
+
+  const price_list = [
+    { id: 1, value: "5000원 이하" },
+    { id: 2, value: "5000~10000원" },
+    { id: 3, value: "10000원 이상" },
+  ];
+
   const handleMenuSelected = (event) => {
     const selectedMenu = event.target.innerText;
     // 드롭다운에 선택한 단어 보여주기
@@ -53,12 +66,14 @@ export default function Main() {
           <DropdownBox
             onClick={handleMenuSelected}
             selectedDropValue={selectedMenuValue}
+            list={menu_list}
           ></DropdownBox>
 
           {/* 가격 카테고리 */}
           <DropdownBox
             onClick={handlePriceSelected}
             selectedDropValue={selectedPriceValue}
+            list={price_list}
           ></DropdownBox>
           <div className={styles.reset}>초기화</div>
         </div>

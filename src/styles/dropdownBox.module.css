@@ -38,6 +38,7 @@ ul {
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
+  white-space: nowrap;
   line-height: 16px;
   padding: 7px 10px;
   margin: 5px 7px;
