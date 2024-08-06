@@ -36,6 +36,14 @@ export default function Main() {
     // handleClickBnt();
   };
 
+  const handleClickKeyword = (event) => {
+    const selectedKeyword = event.target.innerText;
+    console.log(selectedKeyword);
+    setSelected_list(
+      selected_list.filter((keyword) => keyword !== selectedKeyword)
+    );
+  };
+
   return (
     <>
       <Header />
@@ -58,7 +66,13 @@ export default function Main() {
         {/* 검색키워드 */}
         <div className={styles.selected_container}>
           {selected_list.map((el) => {
-            return <SelectedBox key={el} data={el} />;
+            return (
+              <SelectedBox
+                key={el}
+                data={el}
+                onClickKeyword={handleClickKeyword}
+              />
+            );
           })}
         </div>
 
