@@ -11,6 +11,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 20px;
+  gap: 10px;
 }
 
 .userImage {
@@ -38,33 +39,33 @@
 }
 
 .textArea {
-  width: 100%;
+  width: 80%;
   height: 100px;
-  padding: 10px;
+  padding: 20px;
   border: 1px solid #ddd;
-  border-radius: 5px;
-  margin-bottom: 20px;
+  border-radius: 15px;
+  margin-bottom: 30px;
   font-size: 16px;
   resize: none;
 }
 
 .addPhoto {
-  background-color: #007bff;
-  color: white;
+  border: solid 1px #269600;
+  background-color: white;
+  color: #269600;
   padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
+  /* border: none; */
+  border-radius: 20px;
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s;
-
 }
 
 .addPhoto label {
   display: flex;
   align-items: center;
   cursor: pointer;
-  color: #007bff;
+  color: #269600;
   font-weight: bold;
 }
 
@@ -82,6 +83,7 @@
   flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 20px;
+  margin-top: 10px;
 }
 
 .photo {
@@ -111,17 +113,27 @@
   height: 20px;
 }
 
+.addPhoto:hover {
+  background: #269600;
+}
+.addPhoto label:hover {
+  color: #ffffff;
+}
+
 .submitButton {
-  background-color: #007bff;
-  color: white;
+  border: solid 1px #269600;
+  background-color: white;
+  color: #269600;
+  font-weight: bold;
   padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
+  /* border: none; */
+  border-radius: 20px;
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s;
 }
 
 .submitButton:hover {
-  background-color: #0056b3;
+  background: #269600;
+  color: #ffffff;
 }

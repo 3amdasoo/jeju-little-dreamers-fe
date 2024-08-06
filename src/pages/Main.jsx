@@ -166,7 +166,12 @@ export default function Main() {
 
       <Map filteredData={filteredDummy} onMarkerClick={handleMarkerClick} />
 
-      {selectedRestaurant && <RestaurantInfo restaurant={selectedRestaurant} />}
+      {selectedRestaurant && (
+        <RestaurantInfo
+          restaurant={selectedRestaurant}
+          style={"RestaurantInfoMapContainer"}
+        />
+      )}
     </div>
   );
 }

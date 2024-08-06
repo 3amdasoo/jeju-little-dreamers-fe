@@ -1,7 +1,7 @@
 import styles from "../styles/RestaurantInfo.module.css";
 import { useNavigate } from "react-router-dom";
 
-export default function RestaurantInfo({ restaurant }) {
+export default function RestaurantInfo({ restaurant, style }) {
   const navigate = useNavigate();
 
   const handleTitleClick = () => {
@@ -9,7 +9,7 @@ export default function RestaurantInfo({ restaurant }) {
   };
 
   return (
-    <div className={styles.RestaurantInfoContainer}>
+    <div className={styles[style]}>
       <div>
         <h5 className={styles.RestaurantInfoName} onClick={handleTitleClick}>
           {restaurant.store}
@@ -20,7 +20,9 @@ export default function RestaurantInfo({ restaurant }) {
       <div>
         <h5 className={styles.RestaurantInfoAbout}>About</h5>
         <p>{restaurant.address}</p>
-        <p>{restaurant.status}, {restaurant.closingTime}에 영업 종료</p>
+        <p>
+          {restaurant.status}, {restaurant.closingTime}에 영업 종료
+        </p>
         <p>{restaurant.phone}</p>
       </div>
     </div>

@@ -40,7 +40,7 @@ export default function ReviewContainer() {
     <div className={styles.container}>
       <h5 className={styles.heading}>방문자 평가</h5>
       <div className={styles.averageRating}>
-        <p className={styles.averageRatingText}>{averageRating}</p>
+        <p className={styles.averageRatingText}> 평균 {averageRating}</p>
         <div className={styles.stars}>
           {renderStars(averageRating)}
         </div>

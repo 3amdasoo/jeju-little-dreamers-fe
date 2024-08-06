@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
-import styles from '../styles/WriteReview.module.css';
-import RestaurantInfo from '../components/RestaurantInfo';
+import React, { useState } from "react";
+import styles from "../styles/WriteReview.module.css";
+import RestaurantInfo from "../components/RestaurantInfo";
+import avatar from "../assets/Avatar.png";
 
 const WriteReview = () => {
   const [rating, setRating] = useState(0);
-  const [reviewText, setReviewText] = useState('');
+  const [reviewText, setReviewText] = useState("");
   const [photos, setPhotos] = useState([]);
-  const [nickname, setNickname] = useState('User123'); // 더미 데이터
-  const [userImage, setUserImage] = useState('https://via.placeholder.com/50'); // 더미 데이터
+  const [nickname, setNickname] = useState("User123"); // 더미 데이터
+  const [userImage, setUserImage] = useState("https://via.placeholder.com/50"); // 더미 데이터
 
   const handleRatingClick = (ratingValue) => {
     setRating(ratingValue);
@@ -26,14 +27,14 @@ const WriteReview = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // 서버가 없으므로, 더미 데이터로 리뷰 작성 후 /restaurant로 이동
-    console.log('Review submitted', { rating, reviewText, photos });
-    window.location.href = '/restaurant';
+    console.log("Review submitted", { rating, reviewText, photos });
+    window.location.href = "/restaurant";
   };
 
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <img src={userImage} alt="User" className={styles.userImage} />
+        <img src={avatar} alt="User" className={styles.userImage} />
         <span className={styles.nickname}>{nickname}</span>
       </div>
       <div className={styles.rating}>
@@ -42,7 +43,7 @@ const WriteReview = () => {
             key={star}
             className={styles.star}
             onClick={() => handleRatingClick(star)}
-            style={{ color: star <= rating ? '#007bff' : '#e4e5e9' }}
+            style={{ color: star <= rating ? "#269600" : "#e4e5e9" }}
           >
             ★
           </span>
@@ -55,9 +56,7 @@ const WriteReview = () => {
         onChange={(e) => setReviewText(e.target.value)}
       />
       <div className={styles.addPhoto}>
-        <label htmlFor="fileInput">
-          사진 추가
-        </label>
+        <label htmlFor="fileInput">사진 추가</label>
         <input
           id="fileInput"
           type="file"

@@ -1,9 +1,9 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import RestaurantInfo from '../components/RestaurantInfo';
-import MenuInfo from '../components/MenuInfo';
-import ReviewContainer from '../components/ReviewContainer';
-import styles from '../styles/Restaurant.module.css';
+import React from "react";
+import { useParams } from "react-router-dom";
+import RestaurantInfo from "../components/RestaurantInfo";
+import MenuInfo from "../components/MenuInfo";
+import ReviewContainer from "../components/ReviewContainer";
+import styles from "../styles/Restaurant.module.css";
 
 const dummy = [
   {
@@ -38,7 +38,7 @@ const dummy = [
     status: "영업 중",
     closingTime: "23:00",
     phone: "0507-1479-9094",
-    rating: 4.3,
+    rating: 4.5,
   },
   {
     id: 3,
@@ -61,11 +61,14 @@ const dummy = [
 
 export default function Restaurant() {
   const { id } = useParams();
-  const restaurant = dummy.find(rest => rest.id === parseInt(id));
+  const restaurant = dummy.find((rest) => rest.id === parseInt(id));
 
   return (
     <div className={styles.container}>
-      <RestaurantInfo restaurant={restaurant} />
+      <RestaurantInfo
+        restaurant={restaurant}
+        style={"RestaurantInfoPageContainer"}
+      />
       <MenuInfo menu={restaurant.menu} />
       <ReviewContainer />
     </div>
