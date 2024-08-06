@@ -97,7 +97,8 @@ export default function Main() {
           })}
         </div>
 
-        <Map />
+        <Map 
+        keyword={"카페"}/>
       </div>
     </>
   );
