@@ -25,6 +25,7 @@ export default function Map({ filteredData, onMarkerClick }) {
             },
             isLoading: false,
           }));
+          console.log(position);
         },
         (err) => {
           setPosition((prev) => ({

@@ -1,108 +1,113 @@
 .container {
-    width: 100%;
-    max-width: 360px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    overflow-y: auto; 
-    overflow-x: hidden; 
+  width: 95%;
+
+  margin: 0 auto;
+  /* padding: 20px; */
+  /* background-color: #f9f9f9; */
+  /* border-radius: 10px; */
+  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
+
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .container::-webkit-scrollbar {
-    display: none; 
+  display: none;
 }
 
 .heading {
-    font-size: 18px;
-    margin-bottom: 10px;
+  font-size: 23px;
+  margin-bottom: 10px;
 }
 
 .averageRating {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .averageRatingText {
-    font-size: 16px;
-    margin: 0 10px 0 0;
-    text-align: center;
+  font-size: 16px;
+  margin: 0 10px 0 0;
+  text-align: center;
 }
 
 .stars {
-    display: flex;
+  display: flex;
 }
 
-.starFilled, .starEmpty {
-    font-size: 18px;
-    color: #FFD700;
+.starFilled,
+.starEmpty {
+  font-size: 18px;
+  color: #ffd700;
 }
 
 .starEmpty {
-    color: #ddd;
+  color: #ddd;
 }
 
 .userRatingSection {
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .userProfilePic {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
 .userRating {
-    display: flex;
+  display: flex;
 }
 
-.userRating .starFilled, .userRating .starEmpty {
-    font-size: 24px;
-    cursor: pointer;
+.userRating .starFilled,
+.userRating .starEmpty {
+  font-size: 24px;
+  cursor: pointer;
 }
 
 .reviewsContainer {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .gotoReviewButtonBox {
-    display: block;
+  display: block;
 }
 
 .gotoReviewButton {
-    width: 40%;
-    padding: 10px;
-    margin-top: 20px;
-    font-size: 16px;
-    background-color: white;
-    color: #269600;
-    border: solid 0.5px #269600;
-    border-radius: 5px;
-    cursor: pointer;
+  width: 40%;
+  padding: 10px;
+  margin-top: 20px;
+  font-size: 16px;
+  background-color: white;
+  color: #269600;
+  border: solid 0.5px #269600;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .gotoReviewButton:hover {
-    background-color: #61C83F;
+  background: #269600;
+  color: #ffffff;
 }
 
 .loadMoreButton {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    margin-top: 20px;
-    font-size: 16px;
-    background-color: white;
-    color: #269600;
-    border: solid 0.5px #269600;
-    border-radius: 5px;
-    cursor: pointer;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  font-size: 16px;
+  background: #ffffff;
+  color: #269600;
+  border: solid 0.5px #269600;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .loadMoreButton:hover {
-    background-color: #61C83F;
+  background: #269600;
+  color: #ffffff;
 }

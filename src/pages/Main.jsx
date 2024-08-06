@@ -9,7 +9,7 @@ const dummy = [
   {
     id: 1,
     store: "착한 밥집",
-    category: ["한식", "족발보쌈"],
+    category: ["한식"],
     menu: [
       { name: "제육볶음", price: 5000 },
       { name: "소불고기 덮밥", price: 15000 },
@@ -43,7 +43,7 @@ const dummy = [
   {
     id: 3,
     store: "덜 착한 밥집",
-    category: ["일식", "족발보쌈"],
+    category: ["족발보쌈"],
     menu: [
       { name: "일본카레", price: 10000 },
       { name: "족발보쌈", price: 20000 },
@@ -60,8 +60,9 @@ const dummy = [
 ];
 
 export default function Main() {
-  const [selectedMenuValue, setSelectedMenuValue] = useState("선택해주세요");
-  const [selectedPriceValue, setSelectedPriceValue] = useState("선택해주세요");
+  const [selectedMenuValue, setSelectedMenuValue] = useState("오늘 어떤 메뉴?");
+  const [selectedPriceValue, setSelectedPriceValue] =
+    useState("오늘 얼마쓸지!");
 
   const [selected_list, setSelected_list] = useState([]);
   const [filteredDummy, setFilteredDummy] = useState(dummy);
@@ -98,7 +99,9 @@ export default function Main() {
 
   const handleClickKeyword = (event) => {
     const selectedKeyword = event.target.innerText;
-    setSelected_list(selected_list.filter((keyword) => keyword !== selectedKeyword));
+    setSelected_list(
+      selected_list.filter((keyword) => keyword !== selectedKeyword)
+    );
   };
 
   const handleReset = () => {
@@ -117,7 +120,9 @@ export default function Main() {
           if (keyword === "5000원 이하") {
             return item.menu.some((menu) => menu.price <= 5000);
           } else if (keyword === "5000~10000원") {
-            return item.menu.some((menu) => menu.price > 5000 && menu.price <= 10000);
+            return item.menu.some(
+              (menu) => menu.price > 5000 && menu.price <= 10000
+            );
           } else if (keyword === "10000원 이상") {
             return item.menu.some((menu) => menu.price > 10000);
           }
@@ -162,7 +167,12 @@ export default function Main() {
 
       <Map filteredData={filteredDummy} onMarkerClick={handleMarkerClick} />
 
-      {selectedRestaurant && <RestaurantInfo restaurant={selectedRestaurant} />}
+      {selectedRestaurant && (
+        <RestaurantInfo
+          restaurant={selectedRestaurant}
+          style={"RestaurantInfoMapContainer"}
+        />
+      )}
     </div>
   );
 }
