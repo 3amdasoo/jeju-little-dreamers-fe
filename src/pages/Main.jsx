@@ -60,8 +60,9 @@ const dummy = [
 ];
 
 export default function Main() {
-  const [selectedMenuValue, setSelectedMenuValue] = useState("선택해주세요");
-  const [selectedPriceValue, setSelectedPriceValue] = useState("선택해주세요");
+  const [selectedMenuValue, setSelectedMenuValue] = useState("오늘 어떤 메뉴?");
+  const [selectedPriceValue, setSelectedPriceValue] =
+    useState("오늘 얼마쓸지!");
 
   const [selected_list, setSelected_list] = useState([]);
   const [filteredDummy, setFilteredDummy] = useState(dummy);
