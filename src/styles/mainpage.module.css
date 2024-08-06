@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  height: 852px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-items: center;
@@ -12,9 +12,10 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: top;
   gap: 10px;
   margin-bottom: 10px;
+  position: relative;
 }
 
 /* 드롭다운하는 삼각형 모양 버튼 */
@@ -51,9 +52,11 @@
 }
 
 .reset {
-  position: relative;
-  top: -85px;
-  font-size: 13px;
+  font-size: 12px;
+  white-space: nowrap;
+  position: absolute;
+  top: 12px;
+  left: 280px;
 }
 
 .map {

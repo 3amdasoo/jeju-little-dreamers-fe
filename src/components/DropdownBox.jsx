@@ -10,16 +10,33 @@ export default function DropdownBox() {
     { id: 4, value: "족발보쌈" },
   ];
 
-  const [selectedDropValue, setselectedDropValue] = useState("선택해주세요");
+  const [selectedDropValue, setSelectedDropValue] = useState("선택해주세요");
+  const [isDropdown, setIsDropdown] = useState(false);
+
+  const handleClickBnt = () => {
+    setIsDropdown(!isDropdown);
+  };
+
+  const handleSelected = (event) => {
+    setIsDropdown(!isDropdown);
+    const selectedValue = event.target.innerText;
+    setSelectedDropValue(selectedValue);
+  };
 
   return (
     <div className={styles.container}>
-      <button className={styles.select_bnt}>{selectedDropValue}</button>
-      <ul>
+      <button className={styles.select_bnt} onClick={handleClickBnt}>
+        {selectedDropValue}
+      </button>
+      <ul className={isDropdown ? styles : styles.hidden}>
         {category_list.map((el) => {
           return (
-            <li className={styles.listbox}>
-              <button key={el.id} className={styles.list}>
+            <li key={el.id} className={styles.listbox}>
+              <button
+                key={el.id}
+                className={styles.list}
+                onClick={handleSelected}
+              >
                 {el.value}
               </button>
             </li>
@@ -29,19 +46,3 @@ export default function DropdownBox() {
     </div>
   );
 }
-
-// <button className={styles.select_bnt}>
-// {selectedDropValue}
-// <ul>
-//   {category_list.map((el) => {
-//     return (
-//       <li>
-//         <button key={el.id} className={styles}>
-//           {el.value}
-//         </button>
-//       </li>
-//     );
-//   })}
-// </ul>
-// </button>
-// {/* <img className={styles.down_bnt} src={down_bnt} alt="down_bnt" /> */}
