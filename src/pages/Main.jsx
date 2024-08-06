@@ -2,7 +2,46 @@ import styles from "../styles/mainpage.module.css";
 import SelectedBox from "../components/SelectedBox";
 import Map from "../components/Map";
 import DropdownBox from "../components/DropdownBox";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+const dummy = [
+  {
+    id: 1,
+    store: "착한 밥집",
+    category: ["한식", "족발보쌈"],
+    menu: [
+      { name: "제육볶음", price: 5000 },
+      { name: "소불고기 덮밥", price: 15000 },
+    ],
+    lat: 33.487135,
+    lng: 126.5306925,
+    image: null,
+  },
+  {
+    id: 2,
+    store: "더 착한 밥집",
+    category: ["중식", "한식"],
+    menu: [
+      { name: "제육볶음", price: 3000 },
+      { name: "짜장면", price: 5000 },
+    ],
+    lat: 33.488205,
+    lng: 126.5312225,
+    image: null,
+  },
+  {
+    id: 3,
+    store: "덜 착한 밥집",
+    category: ["일식", "족발보쌈"],
+    menu: [
+      { name: "일본카레", price: 10000 },
+      { name: "족발보쌈", price: 20000 },
+    ],
+    lat: 33.487015,
+    lng: 126.5321025,
+    image: null,
+  },
+];
 
 export default function Main() {
   const [selectedMenuValue, setSelectedMenuValue] = useState("선택해주세요");
@@ -10,6 +49,9 @@ export default function Main() {
 
   const [selected_list, setSelected_list] = useState([]);
   const [isDropdown, setIsDropdown] = useState(false);
+  const [filteredDummy, setFilteredDummy] = useState(dummy);
+
+  // selected_list 에 포함된 검색어를 필터링하는 것을 filterdDummy 에 넣고 이를 map component 에 건네주는 거까지
 
   const menu_list = [
     { id: 1, value: "한식" },
@@ -61,45 +103,40 @@ export default function Main() {
   };
 
   return (
-    <>
-      <Header />
-      <div className={styles.container}>
-        <div className={styles.bnt_container}>
-          {/* 메뉴 카테고리 */}
-          <DropdownBox
-            onClick={handleMenuSelected}
-            selectedDropValue={selectedMenuValue}
-            list={menu_list}
-          ></DropdownBox>
+    <div className={styles.container}>
+      <div className={styles.bnt_container}>
+        {/* 메뉴 카테고리 */}
+        <DropdownBox
+          onClick={handleMenuSelected}
+          selectedDropValue={selectedMenuValue}
+          list={menu_list}
+        ></DropdownBox>
 
-
-          {/* 가격 카테고리 */}
-          <DropdownBox
-            onClick={handlePriceSelected}
-            selectedDropValue={selectedPriceValue}
-            list={price_list}
-          ></DropdownBox>
-          <button className={styles.reset} onClick={handleReset}>
-            초기화
-          </button>
-        </div>
-
-        {/* 검색키워드 */}
-        <div className={styles.selected_container}>
-          {selected_list.map((el) => {
-            return (
-              <SelectedBox
-                key={el}
-                data={el}
-                onClickKeyword={handleClickKeyword}
-              />
-            );
-          })}
-        </div>
-
-        <Map 
-        keyword={"카페"}/>
+        {/* 가격 카테고리 */}
+        <DropdownBox
+          onClick={handlePriceSelected}
+          selectedDropValue={selectedPriceValue}
+          list={price_list}
+        ></DropdownBox>
+        <button className={styles.reset} onClick={handleReset}>
+          초기화
+        </button>
       </div>
-    </>
+
+      {/* 검색키워드 */}
+      <div className={styles.selected_container}>
+        {selected_list.map((el) => {
+          return (
+            <SelectedBox
+              key={el}
+              data={el}
+              onClickKeyword={handleClickKeyword}
+            />
+          );
+        })}
+      </div>
+
+      <Map props={selected_list} />
+    </div>
   );
 }
