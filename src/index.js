@@ -1,5 +1,5 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';  
+import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App';
 
@@ -7,16 +7,32 @@ import App from './App';
 const kakaoApiKey = process.env.REACT_APP_KAKAO_API_KEY;
 
 // 카카오 지도 스크립트 추가
-const script = document.createElement('script');
+const addKakaoMapScript = () => {
+  return new Promise((resolve, reject) => {
+    if (document.getElementById('kakao-map-script')) {
+      resolve();
+      return;
+    }
 
-script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${kakaoApiKey}&libraries=services,clusterer,drawing`;
-script.async = true;
-document.head.appendChild(script);
+    const script = document.createElement('script');
+    script.id = 'kakao-map-script';
+    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${kakaoApiKey}&libraries=services,clusterer,drawing`;
+    script.async = true;
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error('Kakao map script load error'));
+    document.head.appendChild(script);
+  });
+};
 
-const container = document.getElementById('root');
-const root = createRoot(container);  
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+addKakaoMapScript().then(() => {
+  const container = document.getElementById('root');
+  const root = createRoot(container);
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+}).catch((error) => {
+  console.error(error);
+});
+

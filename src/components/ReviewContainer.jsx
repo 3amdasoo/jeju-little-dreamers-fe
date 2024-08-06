@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from '../styles/ReviewContainer.module.css';
 import Review from './Review';
 
@@ -6,6 +7,7 @@ export default function ReviewContainer() {
     const [userRating, setUserRating] = useState(0);
     const [reviews, setReviews] = useState([<Review key={0} />, <Review key={1} />]);
     const averageRating = 4.5;
+    const navigate = useNavigate();
 
     const handleRatingChange = (newRating) => {
         setUserRating(newRating);
@@ -25,6 +27,10 @@ export default function ReviewContainer() {
         return stars;
     };
 
+    const handleGoToWriteReview = () => {
+        navigate('/write');
+    };
+
     return (
         <div className={styles.container}>
             <h5 className={styles.heading}>방문자 평가</h5>
@@ -35,7 +41,7 @@ export default function ReviewContainer() {
                 </div>
             </div>
             <div className={styles.gotoReviewButtonBox} >
-                <button className={styles.gotoReviewButton}>리뷰 쓰러가기</button>
+                <button onClick={handleGoToWriteReview} className={styles.gotoReviewButton}>리뷰 쓰러가기</button>
             </div>
         
             <div className={styles.reviewsContainer}>
