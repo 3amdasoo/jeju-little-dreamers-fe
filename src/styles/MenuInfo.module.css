@@ -1,0 +1,28 @@
+.MenuInfoContainer {
+  width: 400px;
+  height:auto;
+  border-radius: 10px;
+  border: 1px solid black;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.MenuInfoName {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 20px;
+}
+
+.MenuInfoList {
+  list-style: none;
+  padding: 0;
+  margin: 0 20px 20px 20px;
+}
+
+.MenuInfoItem {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 16px;
+}

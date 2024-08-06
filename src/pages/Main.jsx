@@ -1,4 +1,3 @@
-import Header from "../components/Header";
 import styles from "../styles/mainpage.module.css";
 import SelectedBox from "../components/SelectedBox";
 import Map from "../components/Map";
@@ -72,6 +71,7 @@ export default function Main() {
             selectedDropValue={selectedMenuValue}
             list={menu_list}
           ></DropdownBox>
+
 
           {/* 가격 카테고리 */}
           <DropdownBox
