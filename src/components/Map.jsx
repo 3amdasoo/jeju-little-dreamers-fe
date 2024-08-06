@@ -12,40 +12,6 @@ export default function Map({ filteredData, onMarkerClick }) {
   });
 
   useEffect(() => {
-    // 위치 정보를 가져오는 부분 주석화
-    /*
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setPosition((prev) => ({
-            ...prev,
-            center: {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude,
-            },
-            isLoading: false,
-          }));
-          console.log(position);
-        },
-        (err) => {
-          setPosition((prev) => ({
-            ...prev,
-            errMsg: err.message,
-            isLoading: false,
-          }));
-        }
-      );
-    } else {
-      setPosition((prev) => ({
-        ...prev,
-        errMsg: "geolocation을 사용할수 없어요..",
-        isLoading: false,
-      }));
-    }
-    */
-  }, []);
-
-  useEffect(() => {
     const script = document.createElement("script");
     script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=6022b3ea363825dba0253bc58c3f328c&libraries=services`;
     script.async = true;
@@ -88,7 +54,7 @@ export default function Map({ filteredData, onMarkerClick }) {
 
         filteredData.forEach((item) => {
           const storeMarker = new window.kakao.maps.Marker({
-            position: new window.kakao.maps.LatLng(item.lat, item.lng),
+            position: new window.kakao.maps.LatLng(item.latitude, item.longitude),
           });
           storeMarker.setMap(map);
 
