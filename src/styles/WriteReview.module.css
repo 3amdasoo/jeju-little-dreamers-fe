@@ -59,11 +59,14 @@
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s;
+  width: 120px;
+  text-align: center;
+  align-items: center;
 }
 
 .addPhoto label {
-  display: flex;
-  align-items: center;
+  /* display: flex;
+  align-items: center; */
   cursor: pointer;
   color: #269600;
   font-weight: bold;
@@ -131,6 +134,7 @@
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s;
+  width: 160px;
 }
 
 .submitButton:hover {

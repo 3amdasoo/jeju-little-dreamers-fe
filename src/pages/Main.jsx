@@ -4,6 +4,7 @@ import Map from "../components/Map";
 import DropdownBox from "../components/DropdownBox";
 import RestaurantInfo from "../components/RestaurantInfo";
 import { useEffect, useState } from "react";
+import jsonData from "../data/nearbyGoorm.json";
 
 const dummy = [
   {
@@ -109,10 +110,10 @@ export default function Main() {
   };
 
   useEffect(() => {
-    let filtered = dummy;
+    let filtered = jsonData;
 
     if (selected_list.length > 0) {
-      filtered = dummy.filter((item) => {
+      filtered = jsonData.filter((item) => {
         const categoryMatch = selected_list.some((keyword) =>
           item.category.includes(keyword)
         );
@@ -164,9 +165,7 @@ export default function Main() {
           <SelectedBox key={el} data={el} onClickKeyword={handleClickKeyword} />
         ))}
       </div>
-
       <Map filteredData={filteredDummy} onMarkerClick={handleMarkerClick} />
-
       {selectedRestaurant && (
         <RestaurantInfo
           restaurant={selectedRestaurant}
