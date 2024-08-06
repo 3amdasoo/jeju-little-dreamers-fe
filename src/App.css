@@ -37,8 +37,8 @@ html,
 }
 
 .App-logo {
-    height: 150px;
-    width: auto;
+  height: 150px;
+  width: auto;
 }
 
 .kakao-login {
@@ -53,5 +53,5 @@ html,
 }
 
 .kakao-login-image {
-    display: block;
+  display: block;
 }
