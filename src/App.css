@@ -6,9 +6,6 @@ html,
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: #f0f0f0; */
-  background-image: url("/Users/lucy.jeon/3amdosoo/jeju-little-dreamers-fe/src/assets/kids.png");
-  background-size: cover;
 }
 
 .App {
