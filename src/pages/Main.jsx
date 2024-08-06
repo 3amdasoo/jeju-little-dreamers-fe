@@ -2,6 +2,7 @@ import styles from "../styles/mainpage.module.css";
 import SelectedBox from "../components/SelectedBox";
 import Map from "../components/Map";
 import DropdownBox from "../components/DropdownBox";
+import RestaurantInfo from "../components/RestaurantInfo";
 import { useEffect, useState } from "react";
 
 const dummy = [
@@ -16,6 +17,11 @@ const dummy = [
     lat: 33.487135,
     lng: 126.5306925,
     image: null,
+    address: "제주 제주시 서천길 1",
+    status: "영업 중",
+    closingTime: "22:00",
+    phone: "0507-1479-9093",
+    rating: 4.1,
   },
   {
     id: 2,
@@ -28,6 +34,11 @@ const dummy = [
     lat: 33.488205,
     lng: 126.5312225,
     image: null,
+    address: "제주 제주시 서천길 2",
+    status: "영업 중",
+    closingTime: "23:00",
+    phone: "0507-1479-9094",
+    rating: 4.3,
   },
   {
     id: 3,
@@ -40,6 +51,11 @@ const dummy = [
     lat: 33.487015,
     lng: 126.5321025,
     image: null,
+    address: "제주 제주시 서천길 3",
+    status: "영업 중",
+    closingTime: "21:00",
+    phone: "0507-1479-9095",
+    rating: 4.2,
   },
 ];
 
@@ -49,6 +65,7 @@ export default function Main() {
 
   const [selected_list, setSelected_list] = useState([]);
   const [filteredDummy, setFilteredDummy] = useState(dummy);
+  const [selectedRestaurant, setSelectedRestaurant] = useState(null);
 
   const menu_list = [
     { id: 1, value: "한식" },
@@ -115,6 +132,10 @@ export default function Main() {
     console.log(filtered);
   }, [selected_list]);
 
+  const handleMarkerClick = (restaurant) => {
+    setSelectedRestaurant(restaurant);
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.bnt_container}>
@@ -139,7 +160,9 @@ export default function Main() {
         ))}
       </div>
 
-      <Map filteredData={filteredDummy} />
+      <Map filteredData={filteredDummy} onMarkerClick={handleMarkerClick} />
+
+      {selectedRestaurant && <RestaurantInfo restaurant={selectedRestaurant} />}
     </div>
   );
 }
