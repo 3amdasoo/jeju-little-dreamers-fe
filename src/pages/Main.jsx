@@ -52,6 +52,9 @@ export default function Main() {
   const [filteredDummy, setFilteredDummy] = useState(dummy);
 
   // selected_list 에 포함된 검색어를 필터링하는 것을 filterdDummy 에 넣고 이를 map component 에 건네주는 거까지
+  useEffect(() => {
+    setFilteredDummy(filteredDummy.filter((el)=> selected_list.some((category))))
+  }, [selected_list]);
 
   const menu_list = [
     { id: 1, value: "한식" },
