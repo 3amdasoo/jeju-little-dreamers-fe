@@ -13,6 +13,6 @@ spec:
     spec:
       containers:
         - name: react-app
-          image: krmp-d2hub-idock.9rum.cc/your-d2hub-repo/react-app:latest
+          image: krmp-d2hub-idock.9rum.cc/dev-test/repo_204bcd8ee6ac
           ports:
             - containerPort: 80
