@@ -7,10 +7,14 @@ import Restaurant from "./pages/Restaurant";
 import Header from "./components/Header";
 import WriteReview from "./pages/WriteReview";
 import Auth from "./pages/Auth";
+import bgImgUrl from "./assets/kids.png";
 
 function App() {
   return (
-    <div className="App">
+    <div
+      className="App"
+      style={{ backgroundImage: `url(${bgImgUrl})`, backgroundRepeat: "cover" }}
+    >
       <Router>
         <Header />
         <Routes>

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import styles from '../styles/ReviewContainer.module.css';
-import Review from './Review';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import styles from "../styles/ReviewContainer.module.css";
+import Review from "./Review";
 
 export default function ReviewContainer() {
   const [userRating, setUserRating] = useState(0);
@@ -19,21 +19,31 @@ export default function ReviewContainer() {
   };
 
   const handleLoadMoreReviews = () => {
-    setReviews([...reviews, { id: reviews.length, content: "추가 리뷰", rating: 4 }]);
+    setReviews([
+      ...reviews,
+      { id: reviews.length, content: "추가 리뷰", rating: 4 },
+    ]);
   };
 
   const renderStars = (rating) => {
     const stars = [];
     for (let i = 0; i < 5; i++) {
       stars.push(
-        <span key={i} className={i < Math.floor(rating) ? styles.starFilled : styles.starEmpty}>★</span>
+        <span
+          key={i}
+          className={
+            i < Math.floor(rating) ? styles.starFilled : styles.starEmpty
+          }
+        >
+          ★
+        </span>
       );
     }
     return stars;
   };
 
   const handleGoToWriteReview = () => {
-    navigate('/write');
+    navigate("/write");
   };
 
   return (
@@ -41,20 +51,29 @@ export default function ReviewContainer() {
       <h5 className={styles.heading}>방문자 평가</h5>
       <div className={styles.averageRating}>
         <p className={styles.averageRatingText}> 평균 {averageRating}</p>
-        <div className={styles.stars}>
-          {renderStars(averageRating)}
-        </div>
+        <div className={styles.stars}>{renderStars(averageRating)}</div>
       </div>
       <div className={styles.gotoReviewButtonBox}>
-        <button onClick={handleGoToWriteReview} className={styles.gotoReviewButton}>리뷰 쓰러가기</button>
+        <button
+          onClick={handleGoToWriteReview}
+          className={styles.gotoReviewButton}
+        >
+          리뷰 쓰러가기
+        </button>
       </div>
 
       <div className={styles.reviewsContainer}>
-        {reviews.map(review => (
-          <Review key={review.id} content={review.content} rating={review.rating} />
+        {reviews.map((review) => (
+          <Review
+            key={review.id}
+            content={review.content}
+            rating={review.rating}
+          />
         ))}
       </div>
-      <button onClick={handleLoadMoreReviews} className={styles.loadMoreButton}>평가 더보기</button>
+      <button onClick={handleLoadMoreReviews} className={styles.loadMoreButton}>
+        평가 더보기
+      </button>
     </div>
   );
 }
