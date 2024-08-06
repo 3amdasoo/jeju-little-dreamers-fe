@@ -7,21 +7,26 @@ export default function RestaurantInfo({ restaurant, style }) {
   const handleTitleClick = () => {
     navigate(`/restaurant/${restaurant.id}`);
   };
+  console.log(restaurant);
 
   return (
     <div className={styles[style]}>
       <div>
         <h5 className={styles.RestaurantInfoName} onClick={handleTitleClick}>
-          {restaurant.store}
+          {restaurant.name}
         </h5>
-        <p>{restaurant.category.join(", ")}</p>
-        <p>별점 {restaurant.rating}점</p>
+        <p>
+        {Array.isArray(restaurant.category)
+          ? restaurant.category.join(", ")
+          : restaurant.category}
+      </p>
+        <p>별점 4.0 점</p>
       </div>
       <div>
         <h5 className={styles.RestaurantInfoAbout}>About</h5>
         <p>{restaurant.address}</p>
         <p>
-          {restaurant.status}, {restaurant.closingTime}에 영업 종료
+          영업중, 22:00 에 영업 종료
         </p>
         <p>{restaurant.phone}</p>
       </div>
