@@ -6,17 +6,19 @@ import Main from "./pages/Main";
 import Restaurant from "./pages/Restaurant";
 import Header from "./components/Header";
 import WriteReview from "./pages/WriteReview";
+import Auth from "./pages/Auth";
 
 function App() {
   return (
     <div className="App">
-      <Header></Header>
+      <Header />
       <Router>
         <Routes>
-          <Route path={"/"} element={<Home />}></Route>
-          <Route path={"/main"} element={<Main />}></Route>
-          <Route path={"/restaurant"} element={<Restaurant/>}></Route>
-          <Route path={"/write"} element={<WriteReview/>}></Route>
+          <Route path="/" element={<Home />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/main" element={<Main />} />
+          <Route path="/restaurant" element={<Restaurant />} />
+          <Route path="/write" element={<WriteReview />} />
         </Routes>
       </Router>
     </div>
