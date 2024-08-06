@@ -13,7 +13,7 @@ export default function DropdownBox({ onClick, selectedDropValue, list }) {
       <button className={styles.select_bnt} onClick={handleClickBnt}>
         {selectedDropValue}
       </button>
-      <ul className={isDropdown ? styles : styles.hidden}>
+      <ul className={isDropdown ? styles.ul : styles.hidden}>
         {list.map((el) => {
           return (
             <li key={el.id} className={styles.listbox}>

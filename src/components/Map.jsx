@@ -1,7 +1,22 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/mainpage.module.css";
 
-export default function Map() {
+export default function Map({ props }) {
+  const [selected, setSelected] = useState([]);
+  const [filteredDummy, setFilteredDummy] = useState([]);
+
+  useEffect(() => {
+    setSelected(props);
+    console.log(selected);
+
+    // 식당 카테고리 필터링
+    for (let i = 0; i > props.length; i++) {
+      // setFilteredDummy(dummy.filter((el) => el.category.includes(selected[i])));
+      console.log(props[i]);
+    }
+    // console.log(filteredDummy);
+  }, [props]);
+
   const [position, setPosition] = useState({
     center: {
       lat: 33.450701,
@@ -49,7 +64,7 @@ export default function Map() {
   // 지도 그리기
   useEffect(() => {
     const script = document.createElement("script");
-    script.src = ``;
+    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=6022b3ea363825dba0253bc58c3f328c&libraries=services`;
     script.async = true;
     document.head.appendChild(script);
 
@@ -65,7 +80,7 @@ export default function Map() {
         };
         const map = new window.kakao.maps.Map(container, options);
 
-        console.log(position.center.lat);
+        // console.log(position.center.lat);
 
         // 마커가 표시될 위치입니다
         var markerPosition = new window.kakao.maps.LatLng(
@@ -79,7 +94,7 @@ export default function Map() {
           new window.kakao.maps.MarkerImage(
             "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png",
             // 이미지 크기
-            new window.kakao.maps.Size(51, 55),
+            new window.kakao.maps.Size(30, 35),
             // 이미지 옵션
             {
               offset: new window.kakao.maps.Point(16, 34),
@@ -89,7 +104,7 @@ export default function Map() {
             }
           );
 
-        // 마커를 생성합니다
+        // 현재 내 위치 마커를 생성합니다
         var myPositionMarker = new window.kakao.maps.Marker({
           position: markerPosition,
           image: icon,
@@ -97,6 +112,14 @@ export default function Map() {
 
         // 마커가 지도 위에 표시되도록 설정합니다
         myPositionMarker.setMap(map);
+
+        // 식당들의 마커를 생성합니다
+        for (let i = 0; i < filteredDummy.length; i++) {
+          const storeMarker = new window.kakao.maps.Marker({
+            // position: new window.kakao.maps.LatLng(dummy[i].lat, dummy[i].lng),
+          });
+          storeMarker.setMap(map);
+        }
       }
     };
   }, [position]);
