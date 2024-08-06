@@ -8,7 +8,7 @@ const dummy = [
   {
     id: 1,
     store: "착한 밥집",
-    category: ["한식", "족발보쌈"],
+    category: ["한식"],
     menu: [
       { name: "제육볶음", price: 5000 },
       { name: "소불고기 덮밥", price: 15000 },
@@ -32,7 +32,7 @@ const dummy = [
   {
     id: 3,
     store: "덜 착한 밥집",
-    category: ["일식", "족발보쌈"],
+    category: ["족발보쌈"],
     menu: [
       { name: "일본카레", price: 10000 },
       { name: "족발보쌈", price: 20000 },
@@ -48,13 +48,7 @@ export default function Main() {
   const [selectedPriceValue, setSelectedPriceValue] = useState("선택해주세요");
 
   const [selected_list, setSelected_list] = useState([]);
-  const [isDropdown, setIsDropdown] = useState(false);
   const [filteredDummy, setFilteredDummy] = useState(dummy);
-
-  // selected_list 에 포함된 검색어를 필터링하는 것을 filterdDummy 에 넣고 이를 map component 에 건네주는 거까지
-  useEffect(() => {
-    setFilteredDummy(filteredDummy.filter((el)=> selected_list.some((category))))
-  }, [selected_list]);
 
   const menu_list = [
     { id: 1, value: "한식" },
@@ -71,31 +65,22 @@ export default function Main() {
 
   const handleMenuSelected = (event) => {
     const selectedMenu = event.target.innerText;
-    // 드롭다운에 선택한 단어 보여주기
     setSelectedMenuValue(selectedMenu);
-    // 키워드 박스를 생성하기 위한 리스트 업데이트
     !selected_list.includes(selectedMenu)
       ? setSelected_list((prevList) => [...prevList, selectedMenu])
       : console.log("이미 존재하는 키워드");
-    console.log(selected_list);
-    setIsDropdown(!isDropdown);
   };
 
   const handlePriceSelected = (event) => {
     const selectedPrice = event.target.innerText;
-    // 드롭다운에 선택한 단어 보여주기
     setSelectedPriceValue(selectedPrice);
-    // 키워드 박스를 생성하기 위한 리스트 업데이트
     !selected_list.includes(selectedPrice)
       ? setSelected_list((prevList) => [...prevList, selectedPrice])
       : console.log("이미 존재하는 키워드");
-    console.log(selected_list);
-    // handleClickBnt();
   };
 
   const handleClickKeyword = (event) => {
     const selectedKeyword = event.target.innerText;
-    console.log(selectedKeyword);
     setSelected_list(
       selected_list.filter((keyword) => keyword !== selectedKeyword)
     );
@@ -105,17 +90,43 @@ export default function Main() {
     setSelected_list([]);
   };
 
+  useEffect(() => {
+    let filtered = dummy;
+
+    if (selected_list.length > 0) {
+      filtered = dummy.filter((item) => {
+        const categoryMatch = selected_list.some((keyword) =>
+          item.category.includes(keyword)
+        );
+        const priceMatch = selected_list.some((keyword) => {
+          if (keyword === "5000원 이하") {
+            return item.menu.some((menu) => menu.price <= 5000);
+          } else if (keyword === "5000~10000원") {
+            return item.menu.some(
+              (menu) => menu.price > 5000 && menu.price <= 10000
+            );
+          } else if (keyword === "10000원 이상") {
+            return item.menu.some((menu) => menu.price > 10000);
+          }
+          return false;
+        });
+
+        return categoryMatch && priceMatch;
+      });
+    }
+
+    setFilteredDummy(filtered);
+    console.log(filtered);
+  }, [selected_list]);
+
   return (
     <div className={styles.container}>
       <div className={styles.bnt_container}>
-        {/* 메뉴 카테고리 */}
         <DropdownBox
           onClick={handleMenuSelected}
           selectedDropValue={selectedMenuValue}
           list={menu_list}
         ></DropdownBox>
-
-        {/* 가격 카테고리 */}
         <DropdownBox
           onClick={handlePriceSelected}
           selectedDropValue={selectedPriceValue}
@@ -126,20 +137,13 @@ export default function Main() {
         </button>
       </div>
 
-      {/* 검색키워드 */}
       <div className={styles.selected_container}>
-        {selected_list.map((el) => {
-          return (
-            <SelectedBox
-              key={el}
-              data={el}
-              onClickKeyword={handleClickKeyword}
-            />
-          );
-        })}
+        {selected_list.map((el) => (
+          <SelectedBox key={el} data={el} onClickKeyword={handleClickKeyword} />
+        ))}
       </div>
 
-      <Map props={selected_list} />
+      <Map filteredData={filteredDummy} />
     </div>
   );
 }
