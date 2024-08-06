@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/mainpage.module.css";
 
-export default function Map({ filteredData }) {
+export default function Map({ filteredData, onMarkerClick }) {
   const [position, setPosition] = useState({
     center: {
-      lat: 33.450701,
-      lng: 126.570667,
+      lat: 33.487131,
+      lng: 126.5316927,
     },
     errMsg: null,
     isLoading: true,
   });
 
   useEffect(() => {
+    // 위치 정보를 가져오는 부분 주석화
+    /*
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -40,6 +42,7 @@ export default function Map({ filteredData }) {
         isLoading: false,
       }));
     }
+    */
   }, []);
 
   useEffect(() => {
@@ -88,10 +91,14 @@ export default function Map({ filteredData }) {
             position: new window.kakao.maps.LatLng(item.lat, item.lng),
           });
           storeMarker.setMap(map);
+
+          window.kakao.maps.event.addListener(storeMarker, "click", () => {
+            onMarkerClick(item);
+          });
         });
       }
     };
-  }, [position, filteredData]);
+  }, [position, filteredData, onMarkerClick]);
 
   return <div id="map" className={styles.map}></div>;
 }

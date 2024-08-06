@@ -11,13 +11,13 @@ import Auth from "./pages/Auth";
 function App() {
   return (
     <div className="App">
-      <Header />
       <Router>
+        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/main" element={<Main />} />
-          <Route path="/restaurant" element={<Restaurant />} />
+          <Route path="/restaurant/:id" element={<Restaurant />} />
           <Route path="/write" element={<WriteReview />} />
         </Routes>
       </Router>
