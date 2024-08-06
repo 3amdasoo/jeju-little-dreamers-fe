@@ -42,21 +42,21 @@
 
 .selected_container {
   width: 330px;
-  height: auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
-  height: 80px;
+  margin-bottom: 10px;
 }
 
 .reset {
+  position: relative;
+  top: -85px;
   font-size: 13px;
 }
 
 .map {
   width: 95%;
   height: 500px;
-  background-color: aqua;
 }
