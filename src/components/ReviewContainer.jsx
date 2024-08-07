@@ -11,7 +11,7 @@ export default function ReviewContainer() {
     { id: 2, content: "괜찮은 편이에요.", rating: 3 },
     { id: 3, content: "서비스가 아쉬웠습니다.", rating: 2 },
   ]);
-  const averageRating = 4.5;
+  const averageRating = 4.0;
   const navigate = useNavigate();
 
   const handleRatingChange = (newRating) => {
