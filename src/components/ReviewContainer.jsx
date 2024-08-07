@@ -5,13 +5,6 @@ import Review from "./Review";
 
 export default function ReviewContainer({ reviews, setReviews, restaurantId }) {
   const [userRating, setUserRating] = useState(0);
-  const [reviews, setReviews] = useState([
-    { id: 0, content: "훌륭한 맛입니다!", rating: 5 },
-    { id: 1, content: "가격 대비 좋습니다.", rating: 4 },
-    { id: 2, content: "괜찮은 편이에요.", rating: 3 },
-    { id: 3, content: "서비스가 아쉬웠습니다.", rating: 2 },
-  ]);
-  const averageRating = 4.0;
   const navigate = useNavigate();
 
   const handleRatingChange = (newRating) => {
