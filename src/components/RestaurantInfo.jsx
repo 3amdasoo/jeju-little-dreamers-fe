@@ -20,7 +20,7 @@ export default function RestaurantInfo({ restaurant, style }) {
           ? restaurant.category.join(", ")
           : restaurant.category}
       </p>
-        <p>별점 4.0 점</p>
+        <p>별점 3.5 점</p>
       </div>
       <div>
         <h5 className={styles.RestaurantInfoAbout}>About</h5>

@@ -1,13 +1,15 @@
 import React, { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import styles from "../styles/WriteReview.module.css";
-import RestaurantInfo from "../components/RestaurantInfo";
 import avatar from "../assets/Avatar.png";
 
 const WriteReview = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
   const [rating, setRating] = useState(0);
   const [reviewText, setReviewText] = useState("");
   const [photos, setPhotos] = useState([]);
-  const [nickname, setNickname] = useState("User123"); // 더미 데이터
+  const [nickname, setNickname] = useState("박원준"); // 더미 데이터
   const [userImage, setUserImage] = useState("https://via.placeholder.com/50"); // 더미 데이터
 
   const handleRatingClick = (ratingValue) => {
@@ -26,9 +28,13 @@ const WriteReview = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const newReview = {
+      id: Date.now(),
+      content: reviewText,
+      rating: rating,
+    };
     // 서버가 없으므로, 더미 데이터로 리뷰 작성 후 /restaurant로 이동
-    console.log("Review submitted", { rating, reviewText, photos });
-    window.location.href = "/restaurant";
+    navigate(`/restaurant/${id}`, { state: { newReview } });
   };
 
   return (

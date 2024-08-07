@@ -1,32 +1,26 @@
-# 1단계 - Node.js 이미지를 사용하여 React 애플리케이션 빌드
-FROM node:20.13.1 AS build
+# Node.js LTS 버전을 기반 이미지로 사용합니다.
+FROM node:lts
 
-# 작업 디렉토리 설정
+# 작업 디렉토리를 설정합니다.
 WORKDIR /app
 
-# package.json과 package-lock.json 복사
+# package.json과 package-lock.json을 복사합니다.
 COPY package*.json ./
 
-# 의존성 설치
+# 의존성을 설치합니다.
 RUN npm install
 
-# 애플리케이션 코드 전체 복사
+# React 앱 소스 파일들을 복사합니다.
 COPY . .
 
-# React 애플리케이션 빌드
+# React 앱을 빌드합니다.
 RUN npm run build
 
-# 2단계 - nginx를 사용하여 프로덕션 이미지 생성
-FROM nginx:alpine
+# 빌드된 앱을 서빙하기 위해 serve 패키지를 설치합니다.
+RUN npm install -g serve
 
-# 이전 단계에서 빌드된 React 앱 복사
-COPY --from=build /app/build /usr/share/nginx/html
+# 컨테이너가 실행될 때 앱을 서빙합니다.
+CMD ["serve", "-s", "build"]
 
-# 사용자 정의 nginx 설정 파일이 있는 경우 복사
-# COPY nginx.conf /etc/nginx/nginx.conf
-
-# 80번 포트 노출
+# 컨테이너가 사용할 포트를 설정합니다.
 EXPOSE 3000
-
-# nginx 시작
-CMD ["nginx", "-g", "daemon off;"]
