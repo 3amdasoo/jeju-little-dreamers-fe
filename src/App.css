@@ -24,7 +24,21 @@ html,
   border-right: 1px solid #eee;
   /* 양옆 선 추가 */
   position: relative;
-  overflow: scroll;
+  overflow: auto;
+  /* Enables scrolling */
+}
+
+/* Hide scrollbar for WebKit-based browsers (Chrome, Safari) */
+.App::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge, and Firefox */
+.App {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 .App-header {

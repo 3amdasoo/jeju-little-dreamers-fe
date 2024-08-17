@@ -22,7 +22,7 @@ function App() {
           <Route path="/auth" element={<Auth />} />
           <Route path="/main" element={<Main />} />
           <Route path="/restaurant/:id" element={<Restaurant />} />
-          <Route path="/write" element={<WriteReview />} />
+          <Route path="/write/:id" element={<WriteReview />} />
         </Routes>
       </Router>
     </div>

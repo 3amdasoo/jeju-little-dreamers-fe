@@ -3,10 +3,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 const Auth = () => {
   const location = useLocation();
-  const navigate = useNavigate(); // useNavigate는 useEffect 바깥에서 정의합니다.
+  const navigate = useNavigate();
   
-  console.log("테스트");
-
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
     const code = queryParams.get('code');

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "../styles/ReviewContainer.module.css";
 import Review from "./Review";
 
-export default function ReviewContainer() {
+export default function ReviewContainer({ reviews, setReviews, restaurantId }) {
   const [userRating, setUserRating] = useState(0);
   const [reviews, setReviews] = useState([
     { id: 0, content: "훌륭한 맛입니다!", rating: 5 },
@@ -19,9 +19,9 @@ export default function ReviewContainer() {
   };
 
   const handleLoadMoreReviews = () => {
-    setReviews([
-      ...reviews,
-      { id: reviews.length, content: "추가 리뷰", rating: 4 },
+    setReviews((prevReviews) => [
+      ...prevReviews,
+      { id: prevReviews.length, content: "추가 리뷰", rating: 4 },
     ]);
   };
 
@@ -43,14 +43,20 @@ export default function ReviewContainer() {
   };
 
   const handleGoToWriteReview = () => {
-    navigate("/write");
+    navigate(`/write/${restaurantId}`);
   };
+
+  // Display up to 5 reviews, including the new one
+  const latestReviews = reviews.slice(-5);
+  const averageRating = reviews.length
+    ? (reviews.reduce((acc, review) => acc + review.rating, 0) / reviews.length).toFixed(1)
+    : 0;
 
   return (
     <div className={styles.container}>
       <h5 className={styles.heading}>방문자 평가</h5>
       <div className={styles.averageRating}>
-        <p className={styles.averageRatingText}> 평균 {averageRating}</p>
+        <p className={styles.averageRatingText}> 평균 {averageRating} </p>
         <div className={styles.stars}>{renderStars(averageRating)}</div>
       </div>
       <div className={styles.gotoReviewButtonBox}>
@@ -63,7 +69,7 @@ export default function ReviewContainer() {
       </div>
 
       <div className={styles.reviewsContainer}>
-        {reviews.map((review) => (
+        {latestReviews.map((review) => (
           <Review
             key={review.id}
             content={review.content}
